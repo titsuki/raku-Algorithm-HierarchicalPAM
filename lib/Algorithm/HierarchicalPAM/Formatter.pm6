@@ -32,7 +32,7 @@ method from-libsvm(@documents) {
     my Int $idx = 0;
     for @documents {
         my ($doc_i, *@wfreqs) = .words;
-        my @words;
+        my Int @words;
         for @wfreqs -> $wfreq {
             my ($word, $freq) = $wfreq.split(":");
             @words.push($word.Int) for ^$freq;
