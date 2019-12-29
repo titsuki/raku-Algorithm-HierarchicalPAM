@@ -1,7 +1,10 @@
 use LibraryMake;
+use Distribution::Builder::MakeFromJSON;
 
-class Build {
-    method build($workdir) {
+class Algorithm::HierarchicalPAM::CustomBuilder is Distribution::Builder::MakeFromJSON
+{
+    method build(IO() $work-dir = $*CWD) {
+        my $workdir = ~$work-dir;
         my $srcdir = "$workdir/src";
         my %vars = get-vars($workdir);
         %vars<hpam> = $*VM.platform-library-name("hpam".IO);
