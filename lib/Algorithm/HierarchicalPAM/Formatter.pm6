@@ -2,7 +2,7 @@ use v6.c;
 use NativeCall;
 use Algorithm::HierarchicalPAM::Document;
 
-unit class Algorithm::HierarchicalPAM::Formatter:ver<0.0.1>:auth<cpan:TITSUKI>;
+unit class Algorithm::HierarchicalPAM::Formatter:ver<0.0.2>:auth<cpan:TITSUKI>;
 
 method from-plain(@documents is raw, &tokenizer = { .words }) {
     my %word2type;

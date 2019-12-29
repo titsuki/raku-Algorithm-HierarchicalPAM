@@ -4,7 +4,7 @@ use Algorithm::HierarchicalPAM::Document;
 use Algorithm::HierarchicalPAM::Theta;
 use Algorithm::HierarchicalPAM::Phi;
 
-unit class Algorithm::HierarchicalPAM::HierarchicalPAMModel:ver<0.0.1>:auth<cpan:TITSUKI>;
+unit class Algorithm::HierarchicalPAM::HierarchicalPAMModel:ver<0.0.2>:auth<cpan:TITSUKI>;
 
 my constant $library = %?RESOURCES<libraries/hpam>.Str;
 

@@ -2,5 +2,8 @@ Revision history for Algorithm-HierarchicalPAM
 
 {{$NEXT}}
 
+0.0.2  2019-12-30T08:48:12+09:00
+    - Use CustomBuilder.pm6 instead of Build.pm
+
 0.0.1  2019-04-02T00:56:19+09:00
     - Initial version
