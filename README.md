@@ -1,9 +1,9 @@
-[![Build Status](https://travis-ci.org/titsuki/p6-Algorithm-HierarchicalPAM.svg?branch=master)](https://travis-ci.org/titsuki/p6-Algorithm-HierarchicalPAM)
+[![Build Status](https://travis-ci.org/titsuki/raku-Algorithm-HierarchicalPAM.svg?branch=master)](https://travis-ci.org/titsuki/raku-Algorithm-HierarchicalPAM)
 
 NAME
 ====
 
-Algorithm::HierarchicalPAM - A Perl 6 Hierarchical PAM (model 2) implementation.
+Algorithm::HierarchicalPAM - A Raku Hierarchical PAM (model 2) implementation.
 
 SYNOPSIS
 ========
@@ -54,7 +54,7 @@ EXAMPLE 2
 DESCRIPTION
 ===========
 
-Algorithm::HierarchicalPAM - A Perl 6 Hierarchical PAM (model 2) implementation.
+Algorithm::HierarchicalPAM - A Raku Hierarchical PAM (model 2) implementation.
 
 CONSTRUCTOR
 -----------

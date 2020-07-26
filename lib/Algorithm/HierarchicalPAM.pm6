@@ -38,7 +38,7 @@ method fit(Int :$num-iterations = 500, Int :$num-super-topics!, Int :$num-sub-to
 
 =head1 NAME
 
-Algorithm::HierarchicalPAM - A Perl 6 Hierarchical PAM (model 2) implementation.
+Algorithm::HierarchicalPAM - A Raku Hierarchical PAM (model 2) implementation.
 
 =head1 SYNOPSIS
 
@@ -85,7 +85,7 @@ Algorithm::HierarchicalPAM - A Perl 6 Hierarchical PAM (model 2) implementation.
 
 =head1 DESCRIPTION
 
-Algorithm::HierarchicalPAM - A Perl 6 Hierarchical PAM (model 2) implementation.
+Algorithm::HierarchicalPAM - A Raku Hierarchical PAM (model 2) implementation.
 
 =head2 CONSTRUCTOR
 
