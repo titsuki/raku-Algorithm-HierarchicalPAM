@@ -27,7 +27,7 @@ void hpam_fit(struct document_model** documents, struct phi_model* phi, struct t
         int super_topic = (topic - num_super_topics) % num_super_topics;
         int sub_topic = (topic - num_super_topics) / num_super_topics;
         hpam_theta_allocate(theta[1], super_topic, sub_topic, doc_i);
-        hpam_phi_allocate(phi, topic, documents[doc_i]->words[word_i]);
+        hpam_phi_allocate(phi, num_super_topics + sub_topic, documents[doc_i]->words[word_i]);
         paths[doc_i]->topics[word_i] = topic;
       }
     }
@@ -44,13 +44,14 @@ void hpam_fit(struct document_model** documents, struct phi_model* phi, struct t
 
         if (prev_topic < num_super_topics) {
           hpam_theta_deallocate(theta[0], 0, prev_topic, doc_i);
+          hpam_phi_deallocate(phi, prev_topic, documents[doc_i]->words[word_i]);
         } else {
           int super_topic = (prev_topic - num_super_topics) % num_super_topics;
           int sub_topic = (prev_topic - num_super_topics) / num_super_topics;
           hpam_theta_deallocate(theta[0], 0, super_topic, doc_i);
           hpam_theta_deallocate(theta[1], super_topic, sub_topic, doc_i);
+          hpam_phi_deallocate(phi, num_super_topics + sub_topic, documents[doc_i]->words[word_i]);
         }
-        hpam_phi_deallocate(phi, paths[doc_i]->topics[word_i], documents[doc_i]->words[word_i]);
 
         for (int current_topic = 0; current_topic < num_super_topics + (num_super_topics * num_sub_topics); current_topic++) {
           if (current_topic < num_super_topics) {
@@ -60,7 +61,7 @@ void hpam_fit(struct document_model** documents, struct phi_model* phi, struct t
           } else {
             int super_topic = (current_topic - num_super_topics) % num_super_topics;
             int sub_topic = (current_topic - num_super_topics) / num_super_topics;
-            double phi_weight = hpam_phi_weight(phi, current_topic, documents[doc_i]->words[word_i]);
+            double phi_weight = hpam_phi_weight(phi, num_super_topics + sub_topic, documents[doc_i]->words[word_i]);
             double super_theta_weight = hpam_theta_weight(theta[0], 0, super_topic, doc_i);
             double sub_theta_weight = hpam_theta_weight(theta[1], super_topic, sub_topic, doc_i);
             weights[current_topic] = phi_weight + super_theta_weight + sub_theta_weight;
@@ -81,16 +82,16 @@ void hpam_fit(struct document_model** documents, struct phi_model* phi, struct t
 
         if (sampled_topic < num_super_topics) {
           hpam_theta_allocate(theta[0], 0, sampled_topic, doc_i);
+          hpam_phi_allocate(phi, sampled_topic, documents[doc_i]->words[word_i]);
         } else {
           int super_topic = (sampled_topic - num_super_topics) % num_super_topics;
           int sub_topic = (sampled_topic - num_super_topics) / num_super_topics;
           hpam_theta_allocate(theta[0], 0, super_topic, doc_i);
           hpam_theta_allocate(theta[1], super_topic, sub_topic, doc_i);
+          hpam_phi_allocate(phi, num_super_topics + sub_topic, documents[doc_i]->words[word_i]);
         }
 
-        hpam_phi_allocate(phi, sampled_topic, documents[doc_i]->words[word_i]);
         paths[doc_i]->topics[word_i] = sampled_topic;
-
         free(weights);
       }
     }
