@@ -20,7 +20,7 @@ method fit(Int :$num-iterations = 500, Int :$num-super-topics!, Int :$num-sub-to
     if $seed.defined {
         hpam_set_srand($seed);
     }
-    my $phi = Algorithm::HierarchicalPAM::Phi.new(:num-sub-topic($num-super-topics + $num-super-topics * $num-sub-topics), :num-word-type(+@$!vocabs), :$beta);
+    my $phi = Algorithm::HierarchicalPAM::Phi.new(:num-sub-topic($num-sub-topics), :num-word-type(+@$!vocabs), :$beta);
     my $theta = CArray[Algorithm::HierarchicalPAM::Theta].allocate: 2;
     $theta[0] = Algorithm::HierarchicalPAM::Theta.new(:num-super-topic(1),
                                                       :num-sub-topic($num-super-topics),
